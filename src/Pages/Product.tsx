@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useProduct } from '../Context/ProductContext'
 import { useParams } from 'react-router'
 import { useCart } from '../Context/CartContext'
+import { useWishlist } from '../Context/WishlistContext'
 import { FaCheck, FaHeart, FaMinus, FaPlus, FaShareAlt, FaShieldAlt, FaShoppingCart, FaStar, FaTruck, FaUndo } from 'react-icons/fa';
 
 const DetailProduct = () => {
     const { id } = useParams();
     const { getProductById, product, productLoading } = useProduct();
     const { addToCart, openModal } = useCart();
+    const { wishlist, toggleWishlist } = useWishlist();
     const [selectedImage, setSelectedImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [isFavorite, setIsFavorite] = useState(false);
@@ -27,6 +29,14 @@ const DetailProduct = () => {
     useEffect(() => {
         setSelectedImage(0);
     }, [product?._id]);
+
+    // 3. Verificar si el producto está en la lista de deseos
+    useEffect(() => {
+        if (product?._id && wishlist) {
+            const isInWishlist = wishlist.some((item) => item._id === product._id);
+            setIsFavorite(isInWishlist);
+        }
+    }, [product?._id, wishlist]);
 
     // 3. Guardián de carga (Evita que el resto del código falle)
     if (productLoading || !product || !product.images) {
@@ -168,10 +178,11 @@ const DetailProduct = () => {
                                         {/* Botones de acción sobre imagen */}
                                         <div className="absolute top-4 right-4 flex flex-col gap-2">
                                             <button
-                                                onClick={() => setIsFavorite(!isFavorite)}
-                                                className="btn btn-circle btn-sm bg-white/90 backdrop-blur-sm hover:bg-white"
+                                                onClick={() => toggleWishlist(product)}
+                                                className="btn btn-circle btn-sm bg-white/90 backdrop-blur-sm hover:bg-white transition-colors"
+                                                title={isFavorite ? 'Eliminar de lista de deseos' : 'Agregar a lista de deseos'}
                                             >
-                                                <FaHeart className={`${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-600'}`} />
+                                                <FaHeart className={`${isFavorite ? 'text-red-500 fill-red-500' : 'text-gray-600'} transition-colors`} />
                                             </button>
                                             <button className="btn btn-circle btn-sm bg-white/90 backdrop-blur-sm hover:bg-white">
                                                 <FaShareAlt className="text-gray-600" />

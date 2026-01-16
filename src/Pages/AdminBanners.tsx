@@ -10,7 +10,7 @@ const AdminBanners = () => {
 
     useEffect(() => {
         fetchBanners();
-    }, []);
+    }, [fetchBanners]);
 
     return (
         <div className="p-6">

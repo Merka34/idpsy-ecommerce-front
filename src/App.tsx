@@ -6,6 +6,7 @@ import Login from './Pages/Login'
 import { UserContextProviver } from './Context/UserContext'
 import { ProductContextProvider } from './Context/ProductContext'
 import { CartContextProvider } from './Context/CartContext'
+import { WishlistContextProvider } from './Context/WishlistContext'
 import { BannerContextProvider } from './Context/BannerContext'
 import { Toaster } from 'react-hot-toast'
 import DetailProduct from './Pages/Product'
@@ -21,8 +22,9 @@ function App() {
         <UserContextProviver>
             <ProductContextProvider>
                 <CartContextProvider>
-                    <BannerContextProvider>
-                        <Routes>
+                    <WishlistContextProvider>
+                        <BannerContextProvider>
+                            <Routes>
                             <Route element={<Layout />}>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/register" element={<Register />} />
@@ -54,8 +56,9 @@ function App() {
                                     }
                                 />
                             </Route>
-                        </Routes>
-                    </BannerContextProvider>
+                            </Routes>
+                        </BannerContextProvider>
+                    </WishlistContextProvider>
                 </CartContextProvider>
             </ProductContextProvider>
             <Toaster />

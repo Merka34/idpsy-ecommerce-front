@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import AuthButtons from './AuthButtons'
 import Cart from './Cart'
+import Wishlist from './Wishlist'
 import UserDropDown from './UserDropDown'
 import { useUser } from '../../Context/UserContext'
 import type { UserContextType } from '../../Interfaces/UserContextType'
@@ -98,6 +99,11 @@ const Navbar = () => {
                     Admin
                 </Link>
             )}
+
+            {/* Lista de deseos */}
+            <div className="indicator">
+                <Wishlist />
+            </div>
 
             {/* Carrito de compras */}
             <div className="indicator">
