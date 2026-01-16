@@ -18,7 +18,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchBanners(); // Una función que llame a GET /api/banners/active
-    }, [fetchBanners]);
+    }, []);
 
     const cardSizes = {
         small: 'w-full',

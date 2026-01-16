@@ -3,6 +3,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { FaUpload, FaLink, FaImage, FaTrash, FaPlus, FaMinus, FaTag, FaStar, FaDollarSign, FaBox, FaLayerGroup } from 'react-icons/fa';
 import { useProduct } from '../../../Context/ProductContext';
+import { useCategory } from '../../../Context/CategoryContext';
 import { useNavigate } from 'react-router';
 import { useUpload } from '../../../Hooks/useUpload';
 // Definir tipos
@@ -63,6 +64,7 @@ const CreateProductForm = () => {
     });
 
     const { createProduct, updateProduct, deleteProduct } = useProduct();
+    const { activeCategories } = useCategory();
     const { uploadImages: uploadToServer } = useUpload();
     const navigate = useNavigate();
 
@@ -753,19 +755,28 @@ const CreateProductForm = () => {
                                     <label className="label">
                                         <span className="label-text font-semibold">Categoría</span>
                                     </label>
-                                    <input
+                                    <select
                                         {...register('category', {
-                                            maxLength: {
-                                                value: 50,
-                                                message: 'Máximo 50 caracteres',
-                                            },
+                                            required: 'La categoría es requerida',
                                         })}
-                                        className={`input input-bordered w-full ${
-                                            errors.category ? 'input-error' : ''
+                                        className={`select select-bordered w-full ${
+                                            errors.category ? 'select-error' : ''
                                         }`}
-                                        type="text"
-                                        placeholder="Ej: Electrónica"
-                                    />
+                                    >
+                                        <option value="">Selecciona una categoría</option>
+                                        {activeCategories.map((cat) => (
+                                            <option key={cat._id} value={cat._id}>
+                                                {cat.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    {errors.category && (
+                                        <label className="label">
+                                            <span className="label-text-alt text-error">
+                                                {errors.category.message}
+                                            </span>
+                                        </label>
+                                    )}
                                 </div>
 
                                 <div className="form-control">

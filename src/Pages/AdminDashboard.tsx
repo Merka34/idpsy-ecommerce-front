@@ -4,6 +4,7 @@ import DashboardLayout from '../Layout/DashboardLayout'
 import CreateProduct from './AdminCreateProduct'
 import UpdateProduct from './AdminUpdateProducts'
 import AdminBanners from './AdminBanners'
+import AdminCategories from './AdminCategories'
 
 const AdminDashboard = () => {
     return (
@@ -25,8 +26,10 @@ const AdminDashboard = () => {
                     />
                     <Route
                         path="banners"
-                        element={<AdminBanners />}
-                    />
+                        element={<AdminBanners />}/>
+                    <Route
+                        path="categories"
+                        element={<AdminCategories />}/>
                 </Route>
             </Routes>
         </section>

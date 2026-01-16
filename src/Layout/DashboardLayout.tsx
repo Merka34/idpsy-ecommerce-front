@@ -35,6 +35,16 @@ const DashboardLayout = () => {
                                 Productos
                             </Link>
                         </li>
+                        <li>
+                            <Link to="/admin/dashboard/categories">
+                                Categorías
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/admin/dashboard/banners">
+                                Banners
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="md:mx-auto hidden md:inline-flex md:gap-4">
@@ -43,6 +53,14 @@ const DashboardLayout = () => {
                         to="/admin/dashboard/products"
                     >
                         Productos
+                    </Link>
+                </div>
+                <div className="md:mx-auto hidden md:inline-flex md:gap-4">
+                    <Link
+                        className="btn btn-primary"
+                        to="/admin/dashboard/categories"
+                    >
+                        Categorías
                     </Link>
                 </div>
                 <div className="md:mx-auto hidden md:inline-flex md:gap-4">
