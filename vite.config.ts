@@ -9,13 +9,13 @@ export default defineConfig({
     allowedHosts: ['1mt1wg-ip-189-179-108-55.tunnelmole.net'],
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:5000',
+        target: 'https://idpsy-ecommerce-back.onrender.com',
         changeOrigin: true,
         secure: false
       },
       // AGREGA ESTO:
       '/uploads': {
-        target: 'http://127.0.0.1:5000',
+        target: 'https://idpsy-ecommerce-back.onrender.com',
         changeOrigin: true,
         secure: false
       }

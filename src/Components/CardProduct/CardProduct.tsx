@@ -58,13 +58,13 @@ const CardProduct = ({ product, size = 'medium' }: CardProductProps) => {
     return (
         <div className={config.container}>
             {/* Badge de categoría */}
-            {category && (
+            {/*category && (
                 <div className="absolute top-2 left-2 z-10">
                     <span className="badge badge-primary badge-sm">
                         {category}
                     </span>
                 </div>
-            )}
+            )*/}
             
             {/* Badge de stock bajo */}
             {stock > 0 && stock <= 5 && (
