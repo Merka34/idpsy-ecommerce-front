@@ -19,6 +19,10 @@ import PaymentFailure from './Pages/PaymentFailure'
 import PaymentPending from './Pages/PaymentPending'
 import Search from './Pages/Search'
 import CategorySearch from './Pages/CategorySearch'
+import Terms from './Pages/Terms'
+import Privacy from './Pages/Privacy'
+import About from './Pages/About'
+import Contact from './Pages/Contact'
 function App() {
     return (
         <UserContextProviver>
@@ -34,6 +38,10 @@ function App() {
                                     <Route path="/login" element={<Login />} />
                                     <Route path="/search" element={<Search />} />
                                     <Route path="/categories" element={<CategorySearch />} />
+                                    <Route path="/about" element={<About />} />
+                                    <Route path="/contact" element={<Contact />} />
+                                    <Route path="/terms" element={<Terms />} />
+                                    <Route path="/privacy" element={<Privacy />} />
                                     <Route
                                         path="/product/:id"
                                         element={<DetailProduct />}
