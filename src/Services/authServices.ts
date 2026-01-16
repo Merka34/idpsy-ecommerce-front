@@ -82,3 +82,26 @@ export const logoutService = async () => {
         )
     }
 }
+
+export const googleLoginService = async (token: string, setUserInfo: any) => {
+    try {
+        const response = await axios.post(`${API_URL}/google`, { token }, {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        })
+
+        if (response.status === 200 || response.status === 201) {
+            setUserInfo(response.data)
+            return {
+                success: true,
+                message: 'Autenticación con Google exitosa',
+                data: response.data,
+            }
+        }
+    } catch (error: any) {
+        return {
+            success: false,
+            message: error.response?.data?.message || 'Error al autenticarse con Google',
+        }
+    }
+}

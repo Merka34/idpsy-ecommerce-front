@@ -259,7 +259,7 @@ const UpdateProductForm = ({ product }: UpdateProductFormProps) => {
             const result = await updateProduct(product._id, {
                 ...data,
                 images: imageUrls,
-                mainImage: data.mainImage,
+                mainImage: (typeof data.mainImage === 'string' ? (imageUrls.indexOf(data.mainImage) !== -1 ? imageUrls.indexOf(data.mainImage) : 0) : data.mainImage),
                 features: data.features.filter(f => f?.trim() !== ''),
                 tags: data.tags.filter(t => t?.trim() !== ''),
             });

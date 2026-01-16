@@ -16,6 +16,9 @@ const DetailProduct = () => {
     const [zoomStyle, setZoomStyle] = useState({});
     const imgRef = useRef(null);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
 
     // 1. Cargar el producto (Solo cuando cambia el ID)
     useEffect(() => {
